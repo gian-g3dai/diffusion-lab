@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "diffusion-lab"
+version = "0.1.0"
+description = "Minimal, readable DDPM/DDIM image diffusion training in plain PyTorch (MNIST, Fashion-MNIST, CIFAR-10)."
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.3",
+    "torchvision>=0.15",
+    "pyyaml>=6.0",
+    "tqdm>=4.60",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+include = ["diffusion_lab*"]

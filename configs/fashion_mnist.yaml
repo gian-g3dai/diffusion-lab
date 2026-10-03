@@ -1,0 +1,31 @@
+dataset: fashion_mnist
+data_root: data
+image_size: 28
+batch_size: 128
+num_workers: 2
+
+model:
+  base_channels: 64
+  channel_mults: [1, 2, 2]
+  attn_levels: [1]
+  num_res_blocks: 2
+  dropout: 0.1
+
+diffusion:
+  timesteps: 1000
+  schedule: cosine
+
+lr: 2.0e-4
+warmup_steps: 500
+max_steps: 30000
+ema_decay: 0.999
+grad_clip: 1.0
+amp: true
+
+log_every: 100
+sample_every: 2000
+ckpt_every: 2000
+n_sample: 64
+sample_steps: 50
+out_dir: outputs/fashion_mnist
+seed: 0

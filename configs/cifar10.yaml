@@ -1,0 +1,33 @@
+# CIFAR-10 needs a lot more compute than MNIST; expect several hours on a single GPU
+# for decent samples. The DDPM paper trains for 800k steps with base_channels=128.
+dataset: cifar10
+data_root: data
+image_size: 32
+batch_size: 128
+num_workers: 4
+
+model:
+  base_channels: 128
+  channel_mults: [1, 2, 2, 2]
+  attn_levels: [1]
+  num_res_blocks: 2
+  dropout: 0.1
+
+diffusion:
+  timesteps: 1000
+  schedule: linear
+
+lr: 2.0e-4
+warmup_steps: 5000
+max_steps: 200000
+ema_decay: 0.9999
+grad_clip: 1.0
+amp: true
+
+log_every: 100
+sample_every: 5000
+ckpt_every: 5000
+n_sample: 64
+sample_steps: 100
+out_dir: outputs/cifar10
+seed: 0
